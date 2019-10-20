@@ -1,7 +1,9 @@
 html{
     background: black;
 }
-
+body{
+    font-family:'Malgun Gothic';
+}
 input{
     width: 400px;
     height: 100px;
