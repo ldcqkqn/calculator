@@ -5,45 +5,112 @@
         <meta charset="utf-8">
         <link rel="stylesheet" href="index.css">
     </head>
+    <script>
+        var num1 = "";
+        var sign = "";
+        var num2 = "";
+        var result = "";
+        var dotselect = false;
+
+        function btnselect(id){
+            if(id=='.'){
+                dotselect = true;
+            }
+            if(sign ==""){
+                num1 += id;
+            }else{
+                num2 += id;
+            }
+            document.getElementById("show").value = document.getElementById("show").value + id;
+        }
+
+        function signselect(id) {
+            sign = id;
+            document.getElementById('show').value = num1 + " " + sign + " "; 
+        }
+
+        function signchange(){
+            if(parseFloat(num1) < 0) { 
+                if(sign == '') { 
+                        num1 = Math.abs(parseInt(num1));
+                        document.getElementById('show').value = num1;
+                    } else if(parseFloat(num2) < 0) {
+                        num2 = Math.abs(parseInt(num2));
+                        document.getElementById('show').value = num2;
+                    } 
+            } else { 
+                if(sign == '') {
+                    num1 = '-' + num1;
+                    document.getElementById('show').value = num1;
+                } else {
+                    num2 = '-'+num2;
+                    document.getElementById('show').value = num2;
+                }
+            }
+        }
+
+        function ac() {
+            num1 = "";
+            num2 = "";
+            sign = "";
+            result = "";
+            document.getElementById('show').value = "";
+        }
+    
+        function equals() { 
+            result = num1 + sign + num2;
+        
+            if(dotselect) { 
+                document.getElementById('show').value = document.getElementById('show').value + " = " + eval(result).toFixed(3);//소수점 3번째자리까지만    
+            }else {
+                document.getElementById('show').value = document.getElementById('show').value + " = " + eval(result);
+            }
+            num1 = eval(result);
+            sign="";
+            num2="";
+            result = "";
+            dotselect = false;    
+        }
+    </script>
         <body>
-            <input type="text" name="nunber" value="0">
+            <input type="text" id="show" value="0">
             <div>
                 <ul>
-                    <li class="gray">AC</li>
-                    <li class="gray">+/-</li>
-                    <li class="gray">%</li>
-                    <li class="orange">÷</li>
+                    <li class="gray" id="reset" onclick="ac()">AC</li>
+                    <li class="gray" id="change" onclick="signchange()">+/-</li>
+                    <li class="gray" id="percent" onclick="signselect('%')">%</li>
+                    <li class="orange" id="divid" onclick="signselect('/')">÷</li>
                 </ul>
             </div>
             <div>
                 <ul>
-                    <li class="darkgray">7</li>
-                    <li class="darkgray">8</li>
-                    <li class="darkgray">9</li>
-                    <li class="orange">×</li>
+                    <li class="darkgray" id="seven" onclick="btnselect(7)">7</li>
+                    <li class="darkgray" id="eight" onclick="btnselect(8)">8</li>
+                    <li class="darkgray" id="nine" onclick="btnselect(9)">9</li>
+                    <li class="orange" id="multi" onclick="signselect('*')">×</li>
                 </ul>
             </div>
             <div>
                 <ul>
-                    <li class="darkgray">4</li>
-                    <li class="darkgray">5</li>
-                    <li class="darkgray">6</li>
-                    <li class="orange">-</li>
+                    <li class="darkgray" id="four" onclick="btnselect(4)">4</li>
+                    <li class="darkgray" id="five" onclick="btnselect(5)">5</li>
+                    <li class="darkgray" id="six" onclick="btnselect(6)">6</li>
+                    <li class="orange" id="minus" onclick="signselect('-')">-</li>
                 </ul>
             </div>
             <div>
                 <ul>
-                    <li class="darkgray">1</li>
-                    <li class="darkgray">2</li>
-                    <li class="darkgray">3</li>
-                    <li class="orange">+</li>
+                    <li class="darkgray" id="one" onclick="btnselect(1)">1</li>
+                    <li class="darkgray" id="two" onclick="btnselect(2)">2</li>
+                    <li class="darkgray" id="three" onclick="btnselect(3)">3</li>
+                    <li class="orange" id="plus" onclick="signselect('+')">+</li>
                 </ul>
             </div>
             <div>
                 <ul>
-                    <li id="zero" class="darkgray" >0</li>
-                    <li class="darkgray">.</li>
-                    <li class="darkgray">=</li>
+                    <li class="darkgray" id="zero" onclick="btnselect(0)">0</li>
+                    <li class="darkgray" id="dot" onclick="dotselect('.')">.</li>
+                    <li class="darkgray" id="equals" onclick="equals('=')">=</li>
                 </ul>
             </div>
         </body>   
