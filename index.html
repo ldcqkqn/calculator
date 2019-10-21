@@ -25,11 +25,10 @@
                 document.getElementById('show').value = "";
                 document.getElementById("show").value = document.getElementById("show").value + id;
             }
-            //total = document.getElementById("show").value = document.getElementById("show").value + id;
             
         }
 
-        function signselect(id) {
+        function signselect(id) {//색바꿔서  넣어줘야함
             sign = id;
             switch(id){
                 case plus :
@@ -45,9 +44,7 @@
                 document.getElementById('divid').style.color("white")
                 break;
             }
-            
-            //total = document.getElementById("show").value = num1 + " " + sign + " ";
-            //색반전 넣어줘야함
+                        
         }
         function percent(id){
             sign = id;
@@ -55,23 +52,13 @@
             
         }
 
-        function signchange(){ 
-            if(parseFloat(text1) < 0) { 
-            if(op == '') { 
-                    text1 = Math.abs(parseInt(text1));
-                    document.getElementById('showText').value = text1;
-                } else if(parseFloat(text2) < 0) {
-                    text2 = Math.abs(parseInt(text2));
-                    document.getElementById('showText').value = text2;
-                } 
-            } else { 
-                if(op == '') {
-                    text1 = '-' + text1;
-                    document.getElementById('showText').value = text1;
-                } else {
-                    text2 = '-'+text2;
-                    document.getElementById('showText').value = text2;
-                }
+        function signchange(){  
+            if(sign == '') {
+                num1 = '-' + num1;
+                document.getElementById('show').value = num1;
+            } else {
+                num2 = '-'+num2;
+                document.getElementById('show').value = num2;
             }
         }
 
