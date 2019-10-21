@@ -31,17 +31,47 @@
 
         function signselect(id) {
             sign = id;
+            switch(id){
+                case plus :
+                document.getElementById('plus').style.color("white")
+                break;
+                case minus :
+                document.getElementById('minus').style.color("white")
+                break;
+                case multi :
+                document.getElementById('multi').style.color("white")
+                break;
+                case divid :
+                document.getElementById('divid').style.color("white")
+                break;
+            }
+            
             //total = document.getElementById("show").value = num1 + " " + sign + " ";
             //색반전 넣어줘야함
         }
+        function percent(id){
+            sign = id;
+            document.getElementById("show").value = num1+sign ;
+            
+        }
 
         function signchange(){ 
-            if(sign == '') {
-                num1 = '-' + num1;
-                document.getElementById('show').value = num1;
-            } else {
-                num2 = '-'+num2;
-                document.getElementById('show').value = num2;
+            if(parseFloat(text1) < 0) { 
+            if(op == '') { 
+                    text1 = Math.abs(parseInt(text1));
+                    document.getElementById('showText').value = text1;
+                } else if(parseFloat(text2) < 0) {
+                    text2 = Math.abs(parseInt(text2));
+                    document.getElementById('showText').value = text2;
+                } 
+            } else { 
+                if(op == '') {
+                    text1 = '-' + text1;
+                    document.getElementById('showText').value = text1;
+                } else {
+                    text2 = '-'+text2;
+                    document.getElementById('showText').value = text2;
+                }
             }
         }
 
@@ -76,7 +106,7 @@
                 <ul>
                     <li class="gray" id="reset" onclick="ac()">AC</li>
                     <li class="gray" id="change" onclick="signchange()">+/-</li>
-                    <li class="gray" id="percent" onclick="signselect('%')">%</li>
+                    <li class="gray" id="percent" onclick="percent('%')">%</li>
                     <li class="orange" id="divid" onclick="signselect('/')">÷</li>
                 </ul>
             </div>
