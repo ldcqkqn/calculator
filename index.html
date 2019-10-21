@@ -19,34 +19,29 @@
             }
             if(sign ==""){
                 num1 += id;
+                document.getElementById("show").value = document.getElementById("show").value + id;
             }else{
                 num2 += id;
+                document.getElementById('show').value = "";
+                document.getElementById("show").value = document.getElementById("show").value + id;
             }
-            document.getElementById("show").value = document.getElementById("show").value + id;
+            //total = document.getElementById("show").value = document.getElementById("show").value + id;
+            
         }
 
         function signselect(id) {
             sign = id;
-            document.getElementById("show").value = num1 + " " + sign + " ";
+            //total = document.getElementById("show").value = num1 + " " + sign + " ";
+            //색반전 넣어줘야함
         }
 
-        function signchange(){
-            if(parseFloat(num1) < 0) { 
-                if(sign == '') { 
-                        num1 = Math.abs(parseInt(num1));
-                        document.getElementById('show').value = num1;
-                    } else if(parseFloat(num2) < 0) {
-                        num2 = Math.abs(parseInt(num2));
-                        document.getElementById('show').value = num2;
-                    } 
-            } else { 
-                if(sign == '') {
-                    num1 = '-' + num1;
-                    document.getElementById('show').value = num1;
-                } else {
-                    num2 = '-'+num2;
-                    document.getElementById('show').value = num2;
-                }
+        function signchange(){ 
+            if(sign == '') {
+                num1 = '-' + num1;
+                document.getElementById('show').value = num1;
+            } else {
+                num2 = '-'+num2;
+                document.getElementById('show').value = num2;
             }
         }
 
@@ -62,9 +57,11 @@
             result = num1 + sign + num2;
         
             if(dotselect) { 
-                document.getElementById('show').value = document.getElementById('show').value + " = " + eval(result).toFixed(3);//소수점 3번째자리까지만    
+                total = document.getElementById('show').value = document.getElementById('show').value + " = " + eval(result).toFixed(3);//소수점 3번째자리까지만 
+                document.getElementById('show').value = eval(result).toFixed(3);   
             }else {
-                document.getElementById('show').value = document.getElementById('show').value + " = " + eval(result);
+                total = document.getElementById('show').value = document.getElementById('show').value + " = " + eval(result);
+                document.getElementById('show').value = eval(result);
             }
             num1 = eval(result);
             sign="";
