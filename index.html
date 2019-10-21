@@ -30,7 +30,7 @@
 
         function signselect(id) {//색바꿔서  넣어줘야함
             sign = id;
-            switch(id){
+            switch(sign){
                 case plus :
                 document.getElementById('plus').style.color("white")
                 break;
@@ -48,7 +48,7 @@
         }
         function percent(id){
             sign = id;
-            document.getElementById("show").value = num1+sign ;
+            document.getElementById("show").value = eval(num1+sign) ;
             
         }
 
@@ -93,7 +93,7 @@
                 <ul>
                     <li class="gray" id="reset" onclick="ac()">AC</li>
                     <li class="gray" id="change" onclick="signchange()">+/-</li>
-                    <li class="gray" id="percent" onclick="percent('%')">%</li>
+                    <li class="gray" id="percent" onclick="percent('/100')">%</li>
                     <li class="orange" id="divid" onclick="signselect('/')">÷</li>
                 </ul>
             </div>
